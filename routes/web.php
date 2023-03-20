@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Blog;
 
-
-Route::get('/', function () {
-    return view('blogs');
-});
-
-Route::get('/blogs/{blog}',function ($filename){
-    $path=__DIR__."/../resources/blogs/$filename.html";
-    $blog=file_get_contents($path);
-    return view('blog',[
-        'blog'=>$blog
+Route::get('/', function () {    
+    return view('blogs',[
+        'blogs'=>Blog::all()
     ]);
 });
+
+Route::get('/blogs/{slug}',function ($slug){    
+    return view('blog',[
+        'blog'=>Blog::find($slug)
+    ]);
+})->where('blog', '[A-z\d\-_]');
