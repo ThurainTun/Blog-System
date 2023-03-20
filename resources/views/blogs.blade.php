@@ -10,9 +10,18 @@
 </head>
 
 <body>
-   <?php foreach($blogs as $blog): ?>
-   <?= $blog ?>
-   <?php endforeach; ?>
+    <?php foreach($blogs as $blog): ?>
+    <a href="blogs/<?= $blog->slug ?>">
+        <h1><?= $blog->title ?></h1>
+    </a>
+    <div>
+        <?= $blog->date ?>
+    </div>
+    <p>
+        <?= $blog->intro ?>
+    </p>
+
+    <?php endforeach; ?>
 </body>
 
 </html>
