@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Faker\Core\File;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\File as HttpFile;
 use Illuminate\Support\Facades\File as FacadesFile;
 
@@ -37,5 +38,13 @@ class Blog
     {
         $blogs = static::all();
         return $blogs->firstWhere('slug', $slug);
+    }
+    public static function findOrFail($slug)
+    {
+        $blog=static::find($slug);
+        if(!$blog){
+            throw new ModelNotFoundException();
+        }
+        return $blog;
     }
 }

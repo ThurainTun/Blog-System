@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-layout>
+    <x-slot name="title">
+        <title>{{$blog->title}}</title>
+    </x-slot>
+    
+    <title>{{ $blog->title }}</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/app.css">
-</head>
-
-<body>
     <h1>
-        <?= $blog->title ?>
+        {{ $blog->title }}
     </h1>
-    <p><?= $blog->body ?></p>
+    <p>{{ $blog->body }}</p>
     <a href="/">back</a>
-</body>
 
-</html>
+</x-layout>
